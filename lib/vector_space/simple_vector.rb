@@ -20,10 +20,6 @@ module VectorSpace
       end
     end
 
-    def inspect
-      to_s
-    end
-
     def [](component)
       project(component)
     end
