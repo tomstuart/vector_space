@@ -25,20 +25,9 @@ module VectorSpace
       self + (-vector)
     end
 
-    def /(divisor)
-      if divisor.zero?
-        raise ZeroDivisionError
-      else
-        if divisor.is_a?(Numeric)
-          # Scalar division (by multiplication)
-          self * (1.0 / divisor)
-        elsif compatible_with?(divisor)
-          # Vector division
-          map_values(dimensions.reject { |dimension| divisor.project(dimension).zero? }, divisor) { |a, b| a / b }.min
-        else
-          raise ArgumentError, "can't divide #{self.inspect} by #{divisor.inspect}"
-        end
-      end
+    # Scalar division (by multiplication)
+    def /(n)
+      self * (1.0 / n)
     end
   end
 end
