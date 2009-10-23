@@ -85,6 +85,14 @@ module VectorSpace
       end
     end
 
+    def eql?(other)
+      map_values(dimensions, other) { |a, b| a.eql?(b) }.all?
+    end
+
+    def hash
+      map_values(dimensions) { |value| value }.hash
+    end
+
     private
       def operate_on_values(*vectors, &block)
         self.class.new Hash[*map_components(dimensions, *vectors, &block).flatten]
