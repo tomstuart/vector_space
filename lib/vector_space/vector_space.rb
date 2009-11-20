@@ -86,11 +86,11 @@ module VectorSpace
     end
 
     def eql?(other)
-      map_values(dimensions, other) { |a, b| a.eql?(b) }.all?
+      map_values(components, other) { |a, b| a.eql?(b) }.all?
     end
 
     def hash
-      map_values(dimensions) { |value| value }.hash
+      map_values(components) { |value| value }.hash
     end
 
     private

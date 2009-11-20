@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'vector_space'
-  s.version = '0.1.2'
-  s.date = '2009-10-23'
+  s.version = '0.1.3'
+  s.date = '2009-11-20'
   s.homepage = 'http://github.com/tomstuart/vector_space'
   s.summary = 'A Ruby library for treating multidimensional values as elements of a vector space'
   s.authors = ['Tom Stuart']
