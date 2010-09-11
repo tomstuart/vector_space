@@ -21,7 +21,7 @@ module VectorSpace
       end
 
       def zero(attributes = {})
-        new Hash[*([index, attributes[index] || reflect_on_component(index).default] + dimensions.map { |dimension| [dimension, reflect_on_component(dimension).zero] }).flatten]
+        new Hash[[[index, attributes[index] || reflect_on_component(index).default]] + dimensions.map { |dimension| [dimension, reflect_on_component(dimension).zero] }]
       end
     end
 
@@ -38,7 +38,7 @@ module VectorSpace
 
       private
         def operate_on_values(*vectors, &block)
-          self.class.new Hash[*(map_components(index, *vectors) { |*values| values.inject { |a, b| a if a == b } } + map_components(dimensions, *vectors, &block)).flatten]
+          self.class.new Hash[map_components(index, *vectors) { |*values| values.inject { |a, b| a if a == b } } + map_components(dimensions, *vectors, &block)]
         end
     end
   end

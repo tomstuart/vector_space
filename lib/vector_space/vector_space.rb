@@ -18,7 +18,7 @@ module VectorSpace
     end
 
     def zero
-      new Hash[*dimensions.map { |dimension| [dimension, reflect_on_component(dimension).zero] }.flatten]
+      new Hash[dimensions.map { |dimension| [dimension, reflect_on_component(dimension).zero] }]
     end
 
     def order
@@ -95,7 +95,7 @@ module VectorSpace
 
     private
       def operate_on_values(*vectors, &block)
-        self.class.new Hash[*map_components(dimensions, *vectors, &block).flatten]
+        self.class.new Hash[map_components(dimensions, *vectors, &block)]
       end
   end
 end
